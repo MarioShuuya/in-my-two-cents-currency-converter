@@ -1,0 +1,27 @@
+# Claude
+.claude/
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Node (if tooling is added later)
+node_modules/
+package-lock.json
+
+# Build artifacts
+web-ext-artifacts/
+*.zip
+*.xpi
+
+# Env
+.env
+.env.local

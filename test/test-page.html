@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Currency Converter Test Page</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, sans-serif; color: #1a1a1a; background: #f5f5f5; padding: 32px; line-height: 1.6; }
+    h1 { font-size: 22px; margin-bottom: 8px; }
+    .subtitle { color: #666; font-size: 14px; margin-bottom: 32px; }
+    section { background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 24px; margin-bottom: 24px; }
+    h2 { font-size: 16px; margin-bottom: 16px; border-bottom: 1px solid #eee; padding-bottom: 8px; }
+    ul { list-style: none; padding: 0; }
+    li { padding: 8px 0; border-bottom: 1px solid #f0f0f0; }
+    li:last-child { border-bottom: none; }
+    p { margin-bottom: 12px; }
+    .label { color: #888; font-size: 13px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+    th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid #eee; font-size: 14px; }
+    th { font-weight: 600; color: #555; }
+    .note { background: #fff8e1; border: 1px solid #ffe082; border-radius: 6px; padding: 16px; margin-top: 32px; font-size: 13px; color: #6d4c00; }
+  </style>
+</head>
+<body>
+
+  <h1>In My Two Cents — Test Page</h1>
+  <p class="subtitle">Open this file in Firefox with the extension loaded. Currency amounts below should get an inline conversion appended.</p>
+
+  <!-- JPY (default source) -->
+  <section>
+    <h2>Japanese Yen (JPY)</h2>
+    <ul>
+      <li>A bowl of ramen costs about ¥1,200 at most shops.</li>
+      <li>Monthly rent in Tokyo: ¥85,000 – ¥150,000</li>
+      <li>Shinkansen ticket Tokyo → Osaka: 13,870 JPY</li>
+      <li>Convenience store onigiri: ¥150</li>
+      <li>Average salary: Yen 4,500,000 per year</li>
+      <li>Capsule hotel per night: ¥3,500</li>
+    </ul>
+  </section>
+
+  <!-- USD -->
+  <section>
+    <h2>US Dollar (USD)</h2>
+    <p class="label">Set source currency to USD in extension settings to test these.</p>
+    <ul>
+      <li>A cup of coffee costs about $4.50 in New York.</li>
+      <li>Monthly rent in San Francisco: $2,800 – $4,200</li>
+      <li>iPhone 16 Pro: USD 999</li>
+      <li>Annual Netflix subscription: US$155.88</li>
+      <li>Average US household income: $74,580</li>
+    </ul>
+  </section>
+
+  <!-- GBP -->
+  <section>
+    <h2>British Pound (GBP)</h2>
+    <p class="label">Set source currency to GBP in extension settings to test these.</p>
+    <ul>
+      <li>A pint in London runs about £6.50 these days.</li>
+      <li>Oyster card daily cap: £8.10</li>
+      <li>Average UK salary: GBP 34,963</li>
+      <li>Fish and chips: £12.50</li>
+    </ul>
+  </section>
+
+  <!-- EUR -->
+  <section>
+    <h2>Euro (EUR)</h2>
+    <p class="label">Set source currency to EUR in extension settings to test these.</p>
+    <ul>
+      <li>Espresso in Rome: €1.20</li>
+      <li>Monthly transit pass in Berlin: EUR 49</li>
+      <li>Museum entry in Paris: €17</li>
+      <li>Average rent in Vienna: €950/month</li>
+    </ul>
+  </section>
+
+  <!-- CHF -->
+  <section>
+    <h2>Swiss Franc (CHF)</h2>
+    <p class="label">Set source currency to CHF in extension settings to test these.</p>
+    <ul>
+      <li>Big Mac in Zurich: CHF 6.90</li>
+      <li>Swiss rail day pass: Fr. 75</li>
+      <li>Average monthly salary: CHF 6,665</li>
+    </ul>
+  </section>
+
+  <!-- KRW -->
+  <section>
+    <h2>South Korean Won (KRW)</h2>
+    <p class="label">Set source currency to KRW in extension settings to test these.</p>
+    <ul>
+      <li>Subway ride in Seoul: ₩1,400</li>
+      <li>Bibimbap lunch: KRW 9,000</li>
+      <li>Movie ticket: ₩12,000</li>
+    </ul>
+  </section>
+
+  <!-- CNY -->
+  <section>
+    <h2>Chinese Yuan (CNY)</h2>
+    <p class="label">Set source currency to CNY in extension settings to test these.</p>
+    <ul>
+      <li>Street food in Beijing: CN¥15</li>
+      <li>Metro ride: CNY 3</li>
+      <li>Average monthly salary: RMB 10,500</li>
+    </ul>
+  </section>
+
+  <!-- AUD -->
+  <section>
+    <h2>Australian Dollar (AUD)</h2>
+    <p class="label">Set source currency to AUD in extension settings to test these.</p>
+    <ul>
+      <li>Flat white in Melbourne: A$5.50</li>
+      <li>Sydney Opera House tour: AU$43</li>
+      <li>Average weekly rent: AUD 580</li>
+    </ul>
+  </section>
+
+  <!-- BRL -->
+  <section>
+    <h2>Brazilian Real (BRL)</h2>
+    <p class="label">Set source currency to BRL in extension settings to test these.</p>
+    <ul>
+      <li>Açaí bowl in Rio: R$18</li>
+      <li>Monthly metro pass in São Paulo: BRL 230</li>
+      <li>Average monthly salary: R$3,200</li>
+    </ul>
+  </section>
+
+  <!-- INR -->
+  <section>
+    <h2>Indian Rupee (INR)</h2>
+    <p class="label">Set source currency to INR in extension settings to test these.</p>
+    <ul>
+      <li>Street food thali: ₹80</li>
+      <li>Mumbai local train monthly pass: Rs.250</li>
+      <li>Average IT salary: INR 12,00,000 per year</li>
+      <li>Cup of chai: Rs 20</li>
+    </ul>
+  </section>
+
+  <!-- TRY -->
+  <section>
+    <h2>Turkish Lira (TRY)</h2>
+    <p class="label">Set source currency to TRY in extension settings to test these.</p>
+    <ul>
+      <li>Kebab in Istanbul: ₺120</li>
+      <li>Istanbulkart transit card: TL 150</li>
+      <li>Average monthly rent: TRY 15,000</li>
+    </ul>
+  </section>
+
+  <!-- PLN -->
+  <section>
+    <h2>Polish Złoty (PLN)</h2>
+    <p class="label">Set source currency to PLN in extension settings to test these.</p>
+    <ul>
+      <li>Pierogi lunch in Warsaw: 25 zł</li>
+      <li>Monthly transit pass: PLN 110</li>
+      <li>Average salary: 7,500 zł</li>
+    </ul>
+  </section>
+
+  <!-- THB -->
+  <section>
+    <h2>Thai Baht (THB)</h2>
+    <p class="label">Set source currency to THB in extension settings to test these.</p>
+    <ul>
+      <li>Pad Thai from a street stall: ฿60</li>
+      <li>BTS Skytrain single trip: THB 44</li>
+      <li>Full moon party entry: ฿300</li>
+    </ul>
+  </section>
+
+  <!-- SEK -->
+  <section>
+    <h2>Swedish Krona (SEK)</h2>
+    <p class="label">Set source currency to SEK in extension settings to test these.</p>
+    <ul>
+      <li>Fika (coffee + pastry) in Stockholm: kr 75</li>
+      <li>Monthly SL card: SEK 970</li>
+      <li>IKEA meatballs: kr. 89</li>
+    </ul>
+  </section>
+
+  <!-- ZAR -->
+  <section>
+    <h2>South African Rand (ZAR)</h2>
+    <p class="label">Set source currency to ZAR in extension settings to test these.</p>
+    <ul>
+      <li>Bunny chow in Durban: R 65</li>
+      <li>Table Mountain cableway: ZAR 395</li>
+      <li>Average monthly salary: R 25,000</li>
+    </ul>
+  </section>
+
+  <!-- Mixed content / edge cases -->
+  <section>
+    <h2>Edge Cases</h2>
+    <ul>
+      <li>No currency here — just the number 1,234 by itself.</li>
+      <li>Already converted: ¥500 (should not double-convert on reload)</li>
+      <li>Large number: ¥1,000,000,000</li>
+      <li>Decimal: ¥99.50</li>
+      <li>Zero: ¥0</li>
+    </ul>
+  </section>
+
+  <!-- Dynamic content test -->
+  <section>
+    <h2>Dynamic Content</h2>
+    <p>Click the button to inject new content. The MutationObserver should convert it automatically.</p>
+    <button onclick="document.getElementById('dynamic').textContent = 'Just arrived: a new item priced at ¥24,800!'" style="padding: 6px 16px; cursor: pointer; margin-bottom: 12px;">
+      Add dynamic content
+    </button>
+    <p id="dynamic" style="font-weight: 600; color: #1565c0;"></p>
+  </section>
+
+  <div class="note">
+    <strong>How to use:</strong> Open <code>about:debugging#/runtime/this-firefox</code>, load the extension, then open this file via <code>file:///</code> or a local server. Only amounts matching your configured <em>source currency</em> will be converted.
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="options-container">
+    <h1>In My Two Cents - Settings</h1>
+
+    <div class="field">
+      <label>Source Currency</label>
+      <div class="currency-select" data-id="source-currency"></div>
+      <input type="hidden" id="source-currency">
+    </div>
+
+    <div class="field">
+      <label>Target Currency</label>
+      <div class="currency-select" data-id="target-currency"></div>
+      <input type="hidden" id="target-currency">
+    </div>
+
+    <button id="save">Save</button>
+    <span id="status"></span>
+
+    <details class="advanced-section">
+      <summary>Advanced</summary>
+      <div class="field">
+        <label for="custom-regex">Currency Detection Regex</label>
+        <textarea id="custom-regex" rows="3" spellcheck="false"></textarea>
+        <span id="regex-error" class="error-text"></span>
+        <button id="reset-regex" type="button">Reset to default</button>
+      </div>
+    </details>
+  </div>
+  <script src="options.js"></script>
+</body>
+</html>

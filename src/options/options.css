@@ -1,0 +1,183 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.options-container {
+  max-width: 400px;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 16px;
+  margin: 0 0 20px;
+}
+
+.field {
+  margin-bottom: 16px;
+}
+
+label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+button {
+  background: #4a90d9;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 20px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+button:hover {
+  background: #357abd;
+}
+
+#status {
+  margin-left: 8px;
+  font-size: 12px;
+  color: #2e7d32;
+}
+
+/* Custom currency dropdown */
+
+.currency-select {
+  position: relative;
+}
+
+.cs-trigger {
+  width: 100%;
+  padding: 6px 8px;
+  font-size: 13px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  color: #333;
+  text-align: left;
+  cursor: pointer;
+}
+
+.cs-trigger:hover {
+  border-color: #999;
+  background: #fff;
+}
+
+.cs-trigger.cs-active {
+  border-color: #4a90d9;
+  background: #fff;
+}
+
+.cs-panel {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 240px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  z-index: 100;
+  margin-top: 2px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.cs-panel.cs-open {
+  display: block;
+}
+
+.cs-option {
+  display: flex;
+  align-items: center;
+  padding: 5px 8px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #333;
+}
+
+.cs-option:hover {
+  background: #f0f4fa;
+}
+
+.cs-option.cs-selected {
+  background: #e8f0fe;
+}
+
+.cs-star {
+  flex-shrink: 0;
+  width: 20px;
+  font-size: 14px;
+  color: #c0a200;
+  cursor: pointer;
+  text-align: center;
+  line-height: 1;
+}
+
+.cs-star:hover {
+  transform: scale(1.2);
+}
+
+.cs-label {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cs-divider {
+  height: 1px;
+  background: #e0e0e0;
+  margin: 2px 8px;
+}
+
+/* Advanced section */
+
+.advanced-section {
+  margin-top: 20px;
+  border-top: 1px solid #e0e0e0;
+  padding-top: 12px;
+}
+
+.advanced-section summary {
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+  margin-bottom: 12px;
+}
+
+#custom-regex {
+  width: 100%;
+  box-sizing: border-box;
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: 12px;
+  padding: 6px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+#reset-regex {
+  margin-top: 8px;
+  background: #757575;
+  font-size: 12px;
+  padding: 4px 12px;
+}
+
+#reset-regex:hover {
+  background: #616161;
+}
+
+.error-text {
+  display: block;
+  font-size: 12px;
+  color: #c62828;
+  margin-top: 4px;
+}

@@ -1,0 +1,39 @@
+{
+  "manifest_version": 2,
+  "name": "In My Two Cents - Currency Converter",
+  "version": "2.0",
+  "description": "Automatically scans web pages for currency amounts and converts them inline to your preferred currency.",
+  "icons": {
+    "48": "icons/icon-48.png",
+    "96": "icons/icon-96.png"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "in-my-two-cents@currency-converter"
+    }
+  },
+  "background": {
+    "scripts": ["src/background/background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["src/content/content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "browser_action": {
+    "default_icon": {
+      "48": "icons/icon-48.png"
+    },
+    "default_title": "In My Two Cents",
+    "default_popup": "src/popup/popup.html"
+  },
+  "options_ui": {
+    "page": "src/options/options.html",
+    "open_in_tab": false
+  }
+}
