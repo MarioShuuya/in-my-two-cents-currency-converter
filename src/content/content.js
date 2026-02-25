@@ -35,7 +35,7 @@ const CURRENCY_PATTERNS = {
   THB: { symbols: ['฿', 'THB'], locale: 'th-TH' },
   TRY: { symbols: ['₺', 'TL', 'TRY'], locale: 'tr-TR' },
   USD: { symbols: ['\\$', 'US\\$', 'USD'], locale: 'en-US' },
-  ZAR: { symbols: ['R', 'ZAR'], locale: 'en-ZA' }
+  ZAR: { symbols: ['R(?=\\d)', 'ZAR'], locale: 'en-ZA' }
 };
 
 function buildRegex(currency) {
