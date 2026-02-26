@@ -12,7 +12,11 @@
   ],
   "browser_specific_settings": {
     "gecko": {
-      "id": "in-my-two-cents@currency-converter"
+      "id": "in-my-two-cents@currency-converter",
+      "data_collection_permissions": {
+        "required": ["none"],
+        "optional": []
+      }
     }
   },
   "background": {
