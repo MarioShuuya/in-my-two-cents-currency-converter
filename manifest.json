@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "In My Two Cents - Currency Converter",
-  "version": "2.0",
+  "version": "2.1.0",
   "description": "Automatically scans web pages for currency amounts and converts them inline to your preferred currency.",
   "icons": {
     "48": "icons/icon-48.png",
