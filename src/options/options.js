@@ -296,7 +296,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Close dropdowns on outside click
-  document.addEventListener('click', () => {
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('.currency-select')) return;
     if (sourceSelect) sourceSelect.close();
     if (targetSelect) targetSelect.close();
   });

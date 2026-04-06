@@ -86,7 +86,7 @@ browser.runtime.sendMessage({ action: 'getRate' }).then(async (data) => {
       for (const node of mutation.addedNodes) {
         if (node.nodeType === Node.ELEMENT_NODE) {
           processNode(node);
-        } else if (node.nodeType === Node.TEXT_NODE) {
+        } else if (node.nodeType === Node.TEXT_NODE && !isInsideEditable(node)) {
           replaceTextInNode(node);
         }
       }
@@ -96,14 +96,28 @@ browser.runtime.sendMessage({ action: 'getRate' }).then(async (data) => {
   observer.observe(document.body, { childList: true, subtree: true });
 });
 
+const SKIP_TAGS = new Set(['script', 'style', 'noscript', 'textarea', 'input', 'select', 'option']);
+
+function isInsideEditable(node) {
+  let el = node.nodeType === Node.TEXT_NODE ? node.parentElement : node;
+  while (el && el !== document.body) {
+    if (SKIP_TAGS.has(el.nodeName.toLowerCase())) return true;
+    if (el.isContentEditable) return true;
+    if (el.getAttribute && el.getAttribute('role') === 'textbox') return true;
+    el = el.parentElement;
+  }
+  return false;
+}
+
 function processNode(rootNode) {
+  if (isInsideEditable(rootNode)) return;
+
   const walker = document.createTreeWalker(
     rootNode,
     NodeFilter.SHOW_TEXT,
     {
       acceptNode(node) {
-        const parentName = node.parentNode ? node.parentNode.nodeName.toLowerCase() : '';
-        if (['script', 'style', 'noscript', 'textarea'].includes(parentName)) {
+        if (isInsideEditable(node)) {
           return NodeFilter.FILTER_REJECT;
         }
         regex.lastIndex = 0;

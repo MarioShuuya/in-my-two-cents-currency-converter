@@ -221,6 +221,50 @@
     <p id="dynamic" style="font-weight: 600; color: #1565c0;"></p>
   </section>
 
+  <!-- Editable fields — cursor position test (bug fix) -->
+  <section>
+    <h2>Editable Fields — Cursor Position Test</h2>
+    <p>Type in each field below. The cursor must <strong>not</strong> jump to the beginning after the first character. If you can type "Hello" and see "Hello" (not "elloH"), the fix is working. Currency amounts typed here should <strong>not</strong> be modified by the extension.</p>
+
+    <div style="margin-top: 16px;">
+      <label style="display:block; margin-bottom: 4px;">Regular text input</label>
+      <input type="text" placeholder="Type here…" style="width: 100%; padding: 6px 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px;">
+    </div>
+
+    <div style="margin-top: 12px;">
+      <label style="display:block; margin-bottom: 4px;">Textarea</label>
+      <textarea rows="2" placeholder="Type here… try ¥1000 or $50" style="width: 100%; padding: 6px 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; resize: vertical;"></textarea>
+    </div>
+
+    <div style="margin-top: 12px;">
+      <label style="display:block; margin-bottom: 4px;">Contenteditable div</label>
+      <div contenteditable="true" style="width: 100%; min-height: 40px; padding: 6px 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; background: #fff;"></div>
+    </div>
+
+    <div style="margin-top: 12px;">
+      <label style="display:block; margin-bottom: 4px;">Contenteditable with role="textbox"</label>
+      <div contenteditable="true" role="textbox" style="width: 100%; min-height: 40px; padding: 6px 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; background: #fff;"></div>
+    </div>
+
+    <div style="margin-top: 12px;">
+      <label style="display:block; margin-bottom: 4px;">Nested contenteditable (span inside a div)</label>
+      <div contenteditable="true" style="width: 100%; min-height: 40px; padding: 6px 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; background: #fff;">
+        <span>Pre-filled: </span>
+      </div>
+    </div>
+
+    <div style="margin-top: 12px;">
+      <label style="display:block; margin-bottom: 4px;">Select element (should not be touched)</label>
+      <select style="padding: 6px 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px;">
+        <option>¥500 option</option>
+        <option>$100 option</option>
+        <option>€25 option</option>
+      </select>
+    </div>
+
+    <p style="margin-top: 16px;">Static text nearby that <em>should</em> still convert: A laptop costs ¥198,000 at the store.</p>
+  </section>
+
   <div class="note">
     <strong>How to use:</strong> Open <code>about:debugging#/runtime/this-firefox</code>, load the extension, then open this file via <code>file:///</code> or a local server. Only amounts matching your configured <em>source currency</em> will be converted.
   </div>
