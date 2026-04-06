@@ -12,7 +12,7 @@ A Firefox WebExtension that automatically detects currency amounts on web pages 
 - Appends converted amount inline: `¥1,000 (5,45 €)`
 - Live exchange rates via [Frankfurter API](https://www.frankfurter.app/) with 60-minute caching
 - Handles dynamically loaded content via MutationObserver
-- Popup showing current rate at a glance
+- Popup converter with currency switching, swap button, and live conversion
 - Options page to configure source and target currencies
 - Favorite currencies — star the ones you use most and they pin to the top of each dropdown
 - Custom regex override for advanced currency detection
@@ -34,7 +34,7 @@ A Firefox WebExtension that automatically detects currency amounts on web pages 
 │   ├── popup/
 │   │   ├── popup.html
 │   │   ├── popup.css
-│   │   └── popup.js         # Quick rate display
+│   │   └── popup.js         # Currency converter & rate display
 │   └── options/
 │       ├── options.html
 │       ├── options.css

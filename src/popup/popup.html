@@ -7,10 +7,25 @@
 <body>
   <div class="popup-container">
     <h1>In My Two Cents</h1>
-    <p class="rate-display">
-      <span id="source-currency">JPY</span> &rarr; <span id="target-currency">EUR</span>
-    </p>
-    <p class="rate-value">Rate: <span id="current-rate">loading...</span></p>
+
+    <div class="converter">
+      <div class="converter-row">
+        <select id="source-currency"></select>
+        <button id="swap" class="swap-btn" title="Swap currencies">&#8646;</button>
+        <select id="target-currency"></select>
+      </div>
+
+      <div class="input-row">
+        <input type="text" id="amount" placeholder="0" inputmode="decimal" autocomplete="off">
+      </div>
+
+      <div class="result-row">
+        <span id="result">0</span>
+      </div>
+
+      <p class="rate-value">Rate: <span id="current-rate">loading...</span></p>
+    </div>
+
     <button id="open-options">Settings</button>
   </div>
   <script src="popup.js"></script>

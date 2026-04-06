@@ -3,16 +3,12 @@ const CACHE_MINUTES = 60;
 const DEFAULT_SOURCE = 'JPY';
 const DEFAULT_TARGET = 'EUR';
 
-async function getCurrencyPair() {
-  const data = await browser.storage.local.get(['sourceCurrency', 'targetCurrency']);
-  return {
-    source: data.sourceCurrency || DEFAULT_SOURCE,
-    target: data.targetCurrency || DEFAULT_TARGET
-  };
-}
-
-async function getExchangeRate() {
-  const { source, target } = await getCurrencyPair();
+async function getExchangeRate(source, target) {
+  if (!source || !target) {
+    const stored = await browser.storage.local.get(['sourceCurrency', 'targetCurrency']);
+    source = stored.sourceCurrency || DEFAULT_SOURCE;
+    target = stored.targetCurrency || DEFAULT_TARGET;
+  }
   const data = await browser.storage.local.get(['rate', 'timestamp', 'cachedSource', 'cachedTarget']);
   const now = Date.now();
 
@@ -46,7 +42,7 @@ async function getExchangeRate() {
 // Listen for the content script asking for the rate
 browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === 'getRate') {
-    getExchangeRate().then(sendResponse);
+    getExchangeRate(request.source, request.target).then(sendResponse);
     return true;
   }
 });

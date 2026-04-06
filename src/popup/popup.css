@@ -1,5 +1,5 @@
 body {
-  width: 240px;
+  width: 280px;
   margin: 0;
   padding: 0;
   font-family: system-ui, -apple-system, sans-serif;
@@ -12,22 +12,105 @@ body {
 
 h1 {
   font-size: 14px;
-  margin: 0 0 12px;
+  margin: 0 0 14px;
 }
 
-.rate-display {
+/* Converter layout */
+
+.converter {
+  margin-bottom: 14px;
+}
+
+.converter-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.converter-row select {
+  flex: 1;
+  padding: 5px 4px;
+  font-size: 13px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fff;
+  color: #333;
+  cursor: pointer;
+  min-width: 0;
+}
+
+.converter-row select:focus {
+  border-color: #4a90d9;
+  outline: none;
+}
+
+.swap-btn {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  padding: 0;
   font-size: 18px;
+  line-height: 28px;
+  border-radius: 50%;
+  background: #e8f0fe;
+  color: #4a90d9;
+  border: 1px solid #c4d8f0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.swap-btn:hover {
+  background: #d0e2fc;
+}
+
+/* Amount input */
+
+.input-row {
+  margin-bottom: 8px;
+}
+
+.input-row input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px 10px;
+  font-size: 20px;
   font-weight: 600;
-  margin: 8px 0;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  color: #1a1a1a;
+}
+
+.input-row input:focus {
+  border-color: #4a90d9;
+}
+
+/* Result */
+
+.result-row {
+  padding: 8px 0;
+  margin-bottom: 4px;
+}
+
+.result-row span {
+  font-size: 22px;
+  font-weight: 700;
+  color: #2e7d32;
 }
 
 .rate-value {
-  font-size: 12px;
-  color: #666;
-  margin: 4px 0 12px;
+  font-size: 11px;
+  color: #888;
+  margin: 0 0 12px;
 }
 
-button {
+/* Settings button */
+
+#open-options {
   background: #4a90d9;
   color: white;
   border: none;
@@ -37,6 +120,6 @@ button {
   font-size: 12px;
 }
 
-button:hover {
+#open-options:hover {
   background: #357abd;
 }
