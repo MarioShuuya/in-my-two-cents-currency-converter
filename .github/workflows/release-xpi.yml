@@ -1,0 +1,22 @@
+name: Build and attach XPI
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  build-xpi:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build XPI
+        run: zip -r in-my-two-cents.xpi manifest.json LICENSE icons/ src/ -x "src/**/*.test.*"
+
+      - name: Upload XPI to release
+        run: gh release upload "${{ github.event.release.tag_name }}" in-my-two-cents.xpi --clobber
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
