@@ -108,6 +108,32 @@ h1 {
   margin: 0 0 12px;
 }
 
+/* Format selector */
+
+.format-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 12px;
+  font-size: 11px;
+  color: #888;
+}
+
+.format-row label {
+  margin: 0;
+  font-weight: normal;
+}
+
+.format-row select {
+  padding: 2px 4px;
+  font-size: 11px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background: #fff;
+  color: #555;
+}
+
 /* Settings button */
 
 #open-options {

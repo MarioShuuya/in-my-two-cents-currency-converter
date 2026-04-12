@@ -5,6 +5,20 @@ const CURRENCIES = [
 ];
 
 let currentRate = 0;
+let numberFormat = 'auto';
+
+function detectPopupFormat() {
+  const formatted = new Intl.NumberFormat(navigator.language || 'en').format(1.1);
+  return formatted.includes(',') ? 'comma' : 'period';
+}
+
+function parseNumber(str, format) {
+  const effective = format === 'auto' ? detectPopupFormat() : format;
+  if (effective === 'comma') {
+    return parseFloat(str.replace(/\./g, '').replace(',', '.'));
+  }
+  return parseFloat(str.replace(/,/g, ''));
+}
 
 document.addEventListener('DOMContentLoaded', () => {
   const sourceEl = document.getElementById('source-currency');
@@ -20,11 +34,21 @@ document.addEventListener('DOMContentLoaded', () => {
     targetEl.appendChild(new Option(code, code));
   }
 
-  // Load saved currencies, then fetch rate
-  browser.storage.local.get(['sourceCurrency', 'targetCurrency']).then((data) => {
+  const formatEl = document.getElementById('number-format');
+
+  // Load saved currencies and number format, then fetch rate
+  browser.storage.local.get(['sourceCurrency', 'targetCurrency', 'numberFormat']).then((data) => {
     sourceEl.value = data.sourceCurrency || 'JPY';
     targetEl.value = data.targetCurrency || 'EUR';
+    numberFormat = data.numberFormat || 'auto';
+    formatEl.value = numberFormat;
     fetchRate();
+  });
+
+  formatEl.addEventListener('change', () => {
+    numberFormat = formatEl.value;
+    browser.storage.local.set({ numberFormat });
+    convert();
   });
 
   function fetchRate() {
@@ -43,8 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function convert() {
-    const raw = amountEl.value.replace(/,/g, '');
-    const num = parseFloat(raw);
+    const num = parseNumber(amountEl.value, numberFormat);
     if (!isNaN(num) && currentRate) {
       const converted = num * currentRate;
       resultEl.textContent = formatResult(converted, targetEl.value);

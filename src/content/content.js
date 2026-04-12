@@ -3,6 +3,24 @@ let sourceCurrency = 'JPY';
 let targetCurrency = 'EUR';
 let regex = null;
 let formatter = null;
+let numberFormat = 'auto';
+
+function detectPageFormat() {
+  const locale = document.documentElement.lang
+    || document.documentElement.getAttribute('xml:lang')
+    || navigator.language
+    || 'en';
+  const formatted = new Intl.NumberFormat(locale).format(1.1);
+  return formatted.includes(',') ? 'comma' : 'period';
+}
+
+function parseNumber(str, format) {
+  const effective = format === 'auto' ? detectPageFormat() : format;
+  if (effective === 'comma') {
+    return parseFloat(str.replace(/\./g, '').replace(',', '.'));
+  }
+  return parseFloat(str.replace(/,/g, ''));
+}
 
 // Currency symbols and keywords used to detect amounts in page text
 const CURRENCY_PATTERNS = {
@@ -65,7 +83,8 @@ browser.runtime.sendMessage({ action: 'getRate' }).then(async (data) => {
   formatter = buildFormatter(targetCurrency);
 
   // Use custom regex if set, otherwise fall back to default
-  const stored = await browser.storage.local.get('customRegex');
+  const stored = await browser.storage.local.get(['customRegex', 'numberFormat']);
+  numberFormat = stored.numberFormat || 'auto';
   if (stored.customRegex) {
     try {
       regex = new RegExp(stored.customRegex, 'gi');
@@ -149,7 +168,7 @@ function replaceTextInNode(node) {
 
     const numberString = p1 || p2;
     if (!numberString) return match;
-    const cleanNumber = parseFloat(numberString.replace(/,/g, ''));
+    const cleanNumber = parseNumber(numberString, numberFormat);
 
     if (!isNaN(cleanNumber)) {
       const converted = cleanNumber * currentRate;

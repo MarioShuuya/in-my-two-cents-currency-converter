@@ -273,7 +273,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let userHasCustomRegex = false;
 
-  browser.storage.local.get(['sourceCurrency', 'targetCurrency', 'customRegex', 'favoriteCurrencies']).then((data) => {
+  const formatEl = document.getElementById('number-format');
+
+  browser.storage.local.get(['sourceCurrency', 'targetCurrency', 'customRegex', 'favoriteCurrencies', 'numberFormat']).then((data) => {
+    formatEl.value = data.numberFormat || 'auto';
     favoriteCurrencies = data.favoriteCurrencies || [];
 
     sourceInput.value = data.sourceCurrency || DEFAULT_SOURCE;
@@ -350,6 +353,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const toSave = {
       sourceCurrency: source,
       targetCurrency: target,
+      numberFormat: formatEl.value,
       rate: null,
       timestamp: null
     };

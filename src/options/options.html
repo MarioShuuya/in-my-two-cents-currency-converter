@@ -20,6 +20,16 @@
       <input type="hidden" id="target-currency">
     </div>
 
+    <div class="field">
+      <label for="number-format">Number Format</label>
+      <select id="number-format">
+        <option value="auto">Auto-detect from page language</option>
+        <option value="period">1,234.56 (period decimal)</option>
+        <option value="comma">1.234,56 (comma decimal)</option>
+      </select>
+      <span class="hint-text">How numbers on the page are interpreted</span>
+    </div>
+
     <button id="save">Save</button>
     <span id="status"></span>
 
