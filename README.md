@@ -41,6 +41,7 @@ A Firefox WebExtension that automatically detects currency amounts on web pages 
 │       └── options.js       # Currency pair settings & favorites
 ├── test/
 │   ├── buildRegex.test.js
+│   ├── replaceTextInNode.test.js
 │   ├── validateRegex.test.js
 │   └── getDefaultRegex.test.js
 ├── package.json

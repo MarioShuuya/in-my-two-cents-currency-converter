@@ -159,7 +159,10 @@ function processNode(rootNode) {
 const MAX_MATCHES_PER_NODE = 50;
 const MAX_MATCH_LENGTH = 100;
 
+const CONVERTED_MARKER = '\u200B';
+
 function replaceTextInNode(node) {
+  if (node.nodeValue.includes(CONVERTED_MARKER)) return;
   regex.lastIndex = 0;
   let matchCount = 0;
   node.nodeValue = node.nodeValue.replace(regex, (match, p1, p2) => {
@@ -172,7 +175,7 @@ function replaceTextInNode(node) {
 
     if (!isNaN(cleanNumber)) {
       const converted = cleanNumber * currentRate;
-      return `${match} (${formatter.format(converted)})`;
+      return `${match} (${CONVERTED_MARKER}${formatter.format(converted)})`;
     }
     return match;
   });
